@@ -6,7 +6,7 @@ public class SCRunner {
 		SeaCreature sq = new SeaCreature("Squidward");
 		s.eat();
 		s.laugh();
-		p.getName();
+		System.out.println(s.getName());
 		p.eat();
 		p.laugh();
 		sq.getClass();
