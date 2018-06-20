@@ -1,48 +1,26 @@
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-public class BinaryConverter implements MouseListener {
+public class BinaryConverter implements ActionListener {
 	static JTextField tf = new JTextField(20);
 	static JButton b = new JButton();
+	static JLabel l = new JLabel();
+	static JFrame f = new JFrame();
+	String input;
 	public static void main(String[] args) {
-		JFrame f = new JFrame();
+		BinaryConverter c = new BinaryConverter();
+		c.addUI();
+	}
+	void addUI() {
+		b.addActionListener(this);
 		JPanel p = new JPanel();
 		b.setText("Convert to ASCII");
-		JLabel l = new JLabel();
 		p.add(tf);
 		p.add(b);
 		p.add(l);
 		f.add(p);
 		f.setVisible(true);
 		f.pack();
-	}
-	void addlist() {
-		b.addMouseListener(this);
-	}
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		convert(tf.getText());
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 	String convert(String input) {
         if(input.length() != 8){
@@ -63,4 +41,10 @@ public class BinaryConverter implements MouseListener {
              return "-";
         }
    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String ascii = convert(tf.getText());
+		l.setText(ascii);
+		f.pack();
+	}
 }
